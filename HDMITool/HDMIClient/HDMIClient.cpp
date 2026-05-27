@@ -18,6 +18,7 @@ CHDMIClientApp theApp;
 
 BOOL CHDMIClientApp::InitInstance()
 {
+    //git test
     // 初始化 Winsock
     WSADATA wsa;
     WSAStartup(MAKEWORD(2, 2), &wsa);
