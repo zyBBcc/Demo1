@@ -1,0 +1,65 @@
+﻿#include "resource.h"
+#include <winres.h>
+
+// ---- 对话框 ----
+IDD_HDMICLIENT_DIALOG DIALOGEX 0, 0, 380, 240
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "HDMI Tool Client"
+FONT 9, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    // 显示器列表
+    LTEXT           "显示器列表:", IDC_STATIC_DISPLAY, 7, 7, 60, 10
+    LISTBOX         IDC_DISPLAY_LIST, 7, 19, 290, 52, WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "刷新", IDC_BTN_REFRESH, 305, 19, 60, 14
+
+    // 服务器连接
+    LTEXT           "服务端IP:", IDC_STATIC_SERVER, 7, 78, 50, 10
+    EDITTEXT        IDC_IP_ADDRESS, 55, 75, 130, 14, ES_AUTOHSCROLL
+    LTEXT           "端口:", IDC_STATIC_PORT, 190, 78, 25, 10
+    EDITTEXT        IDC_PORT, 215, 75, 50, 14, ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "连接", IDC_BTN_CONNECT, 275, 75, 90, 14
+
+    // 连接状态
+    LTEXT           "连接状态:", IDC_STATIC, 7, 97, 50, 10
+    LTEXT           "就绪", IDC_STATUS, 55, 97, 300, 10, SS_ENDELLIPSIS
+
+    // 交互日志
+    LTEXT           "交互日志:", IDC_STATIC, 7, 115, 60, 10
+    EDITTEXT        IDC_LOG_EDIT, 7, 127, 366, 105,
+                    ES_MULTILINE | ES_READONLY | ES_AUTOVSCROLL |
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+END
+
+// ---- 版本信息 ----
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEFLAGSMASK   0x3fL
+#ifdef _DEBUG
+FILEFLAGS       0x1L
+#else
+FILEFLAGS       0x0L
+#endif
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName",      "TN"
+            VALUE "FileDescription",  "HDMI Tool Client"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "HDMIClient"
+            VALUE "LegalCopyright",   "Copyright (C) 2024"
+            VALUE "OriginalFilename", "HDMIClient.exe"
+            VALUE "ProductName",      "HDMI Tool Client"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 0x4b0
+    END
+END

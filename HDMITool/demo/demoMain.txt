@@ -1,0 +1,22 @@
+CHDMIDemo* pView = nullptr;
+void CTestToolDlg::OnBnClickedButtonStopAll()
+{
+	//StopAllTests();
+	if (pView != nullptr)
+	{
+		delete pView;
+		pView = nullptr;
+		return;
+	}
+	RenderConfig cof;
+	cof.fullscreen = true;
+	std::vector<DisplayInfo> vecdisplayinfo = IHDMIOutputRenderer::GetDisplayInfo();
+	DisplayInfo displayinfo;
+	bool b = IHDMIOutputRenderer::FindDisplayByName(vecdisplayinfo[1].deviceName, displayinfo);
+	cof.displayinfo = displayinfo;
+	pView = new CHDMIDemo(cof);
+	if (pView->Create(IDD_HDMI_DIALOG, this))
+	{
+		pView->ShowWindow(SW_SHOW);
+	}
+}
