@@ -1,0 +1,13 @@
+﻿  pch.cpp
+  dllmain.cpp
+  HDMIOutputDLL.cpp
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.h(61,2): warning C4091: “typedef ”: 没有声明变量时忽略“DisplayInfo”的左侧
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.cpp(182,34): warning C4018: “>”: 有符号/无符号不匹配
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.cpp(190,37): warning C4018: “>”: 有符号/无符号不匹配
+    正在创建库 D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\..\lib\Release\HDMIImage.lib 和对象 D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\..\lib\Release\HDMIImage.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 258 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  HDMIImage.vcxproj -> D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\..\HDMIClient\Win32\Release\HDMIImage.dll

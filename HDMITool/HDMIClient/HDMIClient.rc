@@ -2,7 +2,7 @@
 #include <winres.h>
 
 // ---- 对话框 ----
-IDD_HDMICLIENT_DIALOG DIALOGEX 0, 0, 380, 240
+IDD_HDMICLIENT_DIALOG DIALOGEX 0, 0, 380, 340
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
 CAPTION "HDMI Tool Client"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
@@ -21,11 +21,22 @@ BEGIN
 
     // 连接状态
     LTEXT           "连接状态:", IDC_STATIC, 7, 97, 50, 10
-    LTEXT           "就绪", IDC_STATUS, 55, 97, 300, 10, SS_ENDELLIPSIS
+    LTEXT           "就绪", IDC_STATUS, 55, 95, 315, 22, SS_ENDELLIPSIS
+
+    // 电源控制
+    GROUPBOX        "电源控制", IDC_STATIC_PS, 7, 115, 366, 45
+    LTEXT           "型号:", IDC_STATIC, 15, 132, 30, 10
+    COMBOBOX        IDC_PS_TYPE, 47, 130, 55, 60, CBS_DROPDOWNLIST | WS_TABSTOP
+    LTEXT           "地址:", IDC_STATIC, 110, 132, 30, 10
+    EDITTEXT        IDC_PS_ADDRESS, 140, 130, 85, 14, ES_AUTOHSCROLL
+    LTEXT           "通道:", IDC_STATIC, 233, 132, 30, 10
+    EDITTEXT        IDC_PS_CHANNEL, 263, 130, 35, 14, ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "电压:", IDC_STATIC, 306, 132, 30, 10
+    EDITTEXT        IDC_PS_VOLTAGE, 336, 130, 35, 14, ES_AUTOHSCROLL
 
     // 交互日志
-    LTEXT           "交互日志:", IDC_STATIC, 7, 115, 60, 10
-    EDITTEXT        IDC_LOG_EDIT, 7, 127, 366, 105,
+    LTEXT           "交互日志:", IDC_STATIC, 7, 170, 60, 10
+    EDITTEXT        IDC_LOG_EDIT, 7, 182, 366, 150,
                     ES_MULTILINE | ES_READONLY | ES_AUTOVSCROLL |
                     WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
 END

@@ -19,10 +19,11 @@ public:
     void Disconnect();
     bool SendData(const char* data, int len);
     bool IsConnected() const { return m_bConnected; }
+    CString GetLastError() const { return m_lastError; }
 
 private:
     static UINT WINAPI RecvThread(LPVOID pParam);
-    void OnError(CString msg);
+    void OnError(CString msg, int sockErr = 0);
 
     SOCKET m_socket;
     bool m_bConnected;

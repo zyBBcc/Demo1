@@ -1,0 +1,8 @@
+﻿  HDMIOutputDLL.cpp
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.h(3,1): warning C4005: “HDMI_OUTPUT_EXPORTS”: 宏重定义
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\pch.cpp : message : 参见“HDMI_OUTPUT_EXPORTS”的前一个定义
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.h(61,2): warning C4091: “typedef ”: 没有声明变量时忽略“DisplayInfo”的左侧
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.cpp(182,34): warning C4018: “>”: 有符号/无符号不匹配
+D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\HDMIOutputDLL.cpp(190,37): warning C4018: “>”: 有符号/无符号不匹配
+  HDMIImage.vcxproj -> D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIImage\..\HDMIClient\Win32\Debug\HDMIImage.dll

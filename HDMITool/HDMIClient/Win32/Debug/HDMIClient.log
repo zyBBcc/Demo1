@@ -1,7 +1,4 @@
-﻿  pch.cpp
-  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
-  HDMIClient.cpp
+﻿  HDMIClient.cpp
   MainDlg.cpp
-  NetworkClient.cpp
   正在生成代码...
-  HDMIClient.vcxproj -> D:\TN_Project\Demo\HDMITool\HDMIClient\Win32\Debug\HDMIClient.exe
+  HDMIClient.vcxproj -> D:\TN_Project\Demo\GitDemo\Demo1\HDMITool\HDMIClient\Win32\Debug\HDMIClient.exe

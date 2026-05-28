@@ -51,6 +51,8 @@ struct DisplayInfo
 	wchar_t friendlyName[MAX_NAME_LENGTH];
 	int adapterIndex = -1;             // 适配器索引
 	int outputIndex = -1;              // 输出索引
+	int left = 0;                      // 虚拟桌面 X 坐标
+	int top = 0;                       // 虚拟桌面 Y 坐标
 	int width = 0;                     // 当前宽度
 	int height = 0;                    // 当前高度
 	int refreshRate = 0;               // 刷新率

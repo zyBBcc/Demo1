@@ -11,3 +11,8 @@
 #define IDC_STATIC_DISPLAY          1008
 #define IDC_STATIC_SERVER           1009
 #define IDC_STATIC_PORT             1010
+#define IDC_PS_TYPE                 1011
+#define IDC_PS_ADDRESS              1012
+#define IDC_PS_CHANNEL              1013
+#define IDC_STATIC_PS               1014
+#define IDC_PS_VOLTAGE              1015

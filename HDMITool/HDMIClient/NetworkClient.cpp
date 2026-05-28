@@ -25,7 +25,7 @@ bool CNetworkClient::Connect(LPCTSTR ip, UINT port, HWND hNotifyWnd)
     m_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_socket == INVALID_SOCKET)
     {
-        OnError(_T("创建Socket失败"));
+        OnError(_T("创建Socket失败"), WSAGetLastError());
         return false;
     }
 
@@ -40,7 +40,7 @@ bool CNetworkClient::Connect(LPCTSTR ip, UINT port, HWND hNotifyWnd)
         hostent* host = gethostbyname(ipA.GetString());
         if (!host)
         {
-            OnError(_T("IP地址解析失败"));
+            OnError(_T("IP地址解析失败"), WSAGetLastError());
             closesocket(m_socket);
             m_socket = INVALID_SOCKET;
             return false;
@@ -50,7 +50,7 @@ bool CNetworkClient::Connect(LPCTSTR ip, UINT port, HWND hNotifyWnd)
 
     if (connect(m_socket, (sockaddr*)&addr, sizeof(addr)) == SOCKET_ERROR)
     {
-        OnError(_T("连接服务器失败"));
+        OnError(_T("连接服务器失败"), WSAGetLastError());
         closesocket(m_socket);
         m_socket = INVALID_SOCKET;
         return false;
@@ -90,9 +90,17 @@ void CNetworkClient::Disconnect()
 bool CNetworkClient::SendData(const char* data, int len)
 {
     if (!m_bConnected || m_socket == INVALID_SOCKET)
+    {
+        m_lastError = _T("未连接");
         return false;
+    }
 
     int sent = send(m_socket, data, len, 0);
+    if (sent == SOCKET_ERROR)
+    {
+        OnError(_T("send错误"), WSAGetLastError());
+        return false;
+    }
     return sent == len;
 }
 
@@ -113,13 +121,18 @@ UINT WINAPI CNetworkClient::RecvThread(LPVOID pParam)
         if (ret == SOCKET_ERROR || ret == 0)
         {
             if (ret == SOCKET_ERROR)
+            {
+                pThis->OnError(_T("select错误"), WSAGetLastError());
                 break;
+            }
             continue;
         }
 
         int n = recv(pThis->m_socket, buf, sizeof(buf) - 1, 0);
         if (n <= 0)
         {
+            if (n == SOCKET_ERROR)
+                pThis->OnError(_T("recv错误"), WSAGetLastError());
             break;
         }
 
@@ -134,9 +147,13 @@ UINT WINAPI CNetworkClient::RecvThread(LPVOID pParam)
     return 0;
 }
 
-void CNetworkClient::OnError(CString msg)
+void CNetworkClient::OnError(CString msg, int sockErr)
 {
-    m_lastError = msg;
+    if (sockErr != 0)
+        m_lastError.Format(_T("%s (Winsock: %d)"), msg.GetString(), sockErr);
+    else
+        m_lastError = msg;
+
     if (m_hNotifyWnd)
-        ::PostMessage(m_hNotifyWnd, WM_NET_STATUS, NET_ERROR, (LPARAM)new CString(msg));
+        ::PostMessage(m_hNotifyWnd, WM_NET_STATUS, NET_ERROR, (LPARAM)new CString(m_lastError));
 }
