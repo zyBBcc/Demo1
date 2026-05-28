@@ -69,18 +69,18 @@ void CNetworkClient::Disconnect()
 {
     m_bStop = true;
 
+	if (m_hThread)
+	{
+		WaitForSingleObject(m_hThread, 3000);
+		CloseHandle(m_hThread);
+		m_hThread = nullptr;
+	}
+
     if (m_socket != INVALID_SOCKET)
     {
         shutdown(m_socket, SD_BOTH);
         closesocket(m_socket);
         m_socket = INVALID_SOCKET;
-    }
-
-    if (m_hThread)
-    {
-        WaitForSingleObject(m_hThread, 3000);
-        CloseHandle(m_hThread);
-        m_hThread = nullptr;
     }
 
     m_bConnected = false;
